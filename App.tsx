@@ -1,113 +1,110 @@
 import React from 'react';
-import { View, Text, StyleSheet, Image,  SafeAreaView, ScrollView } from 'react-native';
+import { View, Text, StyleSheet, Image} from 'react-native';
+import Feather from 'react-native-vector-icons/Feather';
 
-function App(): JSX.Element {
-  const courses = [
-  { id: 1, title: 'Introduction to React', rate: '2', type: '1', price: '$20' },
-  { id: 2, title: 'Advanced JavaScript', rate: '3', type: '0', price: '$20' },
-  { id: 3, title: 'React Native Basics', rate: '4', type: '1', price: '$20' },
-  { id: 4, title: 'React Native Basics', rate: '5', type: '0', price: '$20' },
-];
+const App = () => {
+  
   return (
     <View style={styles.body}>
-      <SafeAreaView>
-        <ScrollView
-          contentInsetAdjustmentBehavior="automatic"
-        >
-        <View style={styles.container}> 
-              {courses.map(course => (
-              <View key={course.id} style={styles.courseContainer}>
-                <Text 
-                
-                
-                style={[styles.type, course.type == '1' ?
-                        styles.red :
-                        styles.blue ]}
-                >{course.type == '1' ? 'Live' : 'Recorded'}</Text>
-                <Image source={require('./course.png')}  style={styles.image} />
-                <View>
-                <Text style={styles.price}>{course.price}</Text>
-                <Text style={styles.title}>{course.title}</Text>
-                <Text style={styles.rate}>{course.rate} rate</Text>
-                </View>
-              </View>
-            
-          ))}
+      <View  style={styles.consultantContainer}>
+        <View style={styles.avatarContainer}>
+          <Image source={require('./course.png')}  style={styles.image} />
+          <View><Text style={[styles.name]} >Amire</Text></View>
         </View>
-        </ScrollView>
-      </SafeAreaView>
+        
+        <View>
+          
+          <View style={[styles.title,styles.contact]}>
+            <Text style={{ color : '#fff' , fontSize: 19 }}>Contact now</Text>
+            <Feather
+            name="message-circle"
+            style={{ 
+              fontSize: 22,
+              marginHorizontal: 10,
+              color : '#fff',
+            }}
+          />
+          </View>
+
+          <View style={[styles.title,styles.request]}>
+            <Text style={{ color : '#fff' , fontSize: 19 }}>Request Private Session</Text>
+            <Feather
+              name="file-text"
+              style={{
+                fontSize: 22,
+                marginHorizontal: 10,
+                color : '#fff',
+              }}
+            />
+            
+          </View>
+
+
+        </View>      
+      </View>
       
     </View>
+
+    
     
   );
 };
 
 const styles = StyleSheet.create({
   body:{
-    backgroundColor: '#f5f7fa',
+    
   },
-  container: {
-    flex: 1,
-    marginTop:20,
-    padding: 10,
-  
-  },
-  courseContainer: {
+  consultantContainer: {
     flexDirection: 'row',
     marginBottom: 20,
     paddingTop: 50,
-    paddingBottom: 40,
+    paddingBottom: 0,
     paddingRight:20,
     paddingLeft:20,
     backgroundColor: '#fff',
     borderRadius: 15,
   },
-  type:{
-    position: 'absolute',
-    top: 0,
-    right:0,
-    fontSize: 18,
-    paddingLeft:20,
-    paddingRight:20,
-    paddingTop:5,
-    paddingBottom:5,
-    borderTopRightRadius: 15,
-    borderBottomLeftRadius: 15,
-    color:'#fff',
-    fontWeight:'500'
-  },
-  red:{
-    backgroundColor: 'red',
-  },
-  blue:{
-    backgroundColor: '#07b2bd',
+  avatarContainer:{
+    marginRight: 10
   },
   image:{
-    width: 100,
+    width: 80,
     height: 80,
-    marginRight:15,
-    borderRadius: 10,
+    borderRadius: 50,
   },
-  price: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    backgroundColor:'#07b2bd',
-    color:'#fff',
-    alignSelf:'flex-start',
-    paddingTop:5,
-    paddingBottom:5,
-    paddingLeft:10,
-    paddingRight:10,
-    borderRadius:5,
-    marginBottom:10
+  name:{
+    textAlign: 'center',
+    marginTop: 5,
+    fontSize:20,
+    fontWeight:'bold'
   },
   title: {
     fontSize: 19,
     fontWeight: 'bold',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    
   },
-  rate: {
-    fontSize: 17,
-    color: '#666',
+  contact:{
+    backgroundColor: '#07b2bd',
+    borderRadius: 15,
+    paddingLeft:15,
+    paddingRight:10,
+    paddingBottom:5,
+    paddingTop:5,
+    color:'#fff',
+    marginBottom:5, 
+  },
+
+  request:{
+    backgroundColor: '#fb5456',
+    borderRadius: 15,
+    paddingLeft:20,
+    paddingRight:10,
+    paddingBottom:5,
+    paddingTop:5,
+    color:'#fff',
+    
   },
 });
 

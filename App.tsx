@@ -1,8 +1,11 @@
-import React from 'react';
-import { View, Text, StyleSheet, Image} from 'react-native';
+import React , { useState }  from 'react';
+import { View, Text, StyleSheet, Image, TouchableOpacity} from 'react-native';
 import Feather from 'react-native-vector-icons/Feather';
+import Tab from './Tab';
 
 const App = () => {
+
+  const [activeTab, setActiveTab] = useState(1);
   
   return (
     <View style={styles.body}>
@@ -42,6 +45,55 @@ const App = () => {
 
         </View>      
       </View>
+
+      <View style={{ flexDirection: 'row' }}>
+
+        <TouchableOpacity onPress={() => setActiveTab(0)}>
+          <Text style={[activeTab === 0 ? styles.activeTab : styles.normalTab ]}>About</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity onPress={() => setActiveTab(1)}>
+          <Text style={[activeTab === 1 ? styles.activeTab : styles.normalTab ]}>Session Reservation</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity onPress={() => setActiveTab(2)}>
+          <Text style={[activeTab === 2 ? styles.activeTab : styles.normalTab ]}>Rates</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity onPress={() => setActiveTab(3)}>
+          <Text style={[activeTab === 3 ? styles.activeTab : styles.normalTab ]}>Follow-up Systems</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity onPress={() => setActiveTab(4)}>
+          <Text style={[activeTab === 4 ? styles.activeTab : styles.normalTab ]}>Courses</Text>
+        </TouchableOpacity>
+
+      </View>
+
+      <Tab active={activeTab === 0}>
+        {/* Content for Tab 1 */}
+        <Text>Tab 1 Content</Text>
+      </Tab>
+
+      <Tab active={activeTab === 1}>
+        {/* Content for Tab 2 */}
+        <Text>Tab 2 sess</Text>
+      </Tab>
+
+      <Tab active={activeTab === 2}>
+        {/* Content for Tab 2 */}
+        <Text>Tab 3 Content</Text>
+      </Tab>
+
+      <Tab active={activeTab === 3}>
+        {/* Content for Tab 2 */}
+        <Text>Tab 3 Content</Text>
+      </Tab>
+
+      <Tab active={activeTab === 4}>
+        {/* Content for Tab 2 */}
+        <Text>Tab 4 Content</Text>
+      </Tab>
       
     </View>
 
@@ -104,7 +156,27 @@ const styles = StyleSheet.create({
     paddingBottom:5,
     paddingTop:5,
     color:'#fff',
-    
+  },
+
+  activeTab:{
+    fontWeight : 'bold',
+    fontSize: 15,
+    padding:10,
+    marginLeft: 10,
+    marginRight: 10,
+    backgroundColor: '#fdeded',
+    borderRadius: 15,
+    color: '#fb5456'
+
+  },
+  normalTab:{
+    fontWeight : 'normal',
+    fontSize: 15,
+    padding:10,
+    marginLeft: 10,
+    marginRight: 10,
+    borderRadius: 15,
+
   },
 });
 

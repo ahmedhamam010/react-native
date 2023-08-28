@@ -2,13 +2,16 @@ import React , { useState }  from 'react';
 import { View, Text, StyleSheet, Image, TouchableOpacity} from 'react-native';
 import Feather from 'react-native-vector-icons/Feather';
 import Tab from './Tab';
+import CalendarComponent from './CalendarComponent';
+import SlotsList from './SlotsList';
+
 
 const App = () => {
 
   const [activeTab, setActiveTab] = useState(1);
   
   return (
-    <View style={styles.body}>
+    <View>
       <View  style={styles.consultantContainer}>
         <View style={styles.avatarContainer}>
           <Image source={require('./course.png')}  style={styles.image} />
@@ -77,7 +80,9 @@ const App = () => {
 
       <Tab active={activeTab === 1}>
         {/* Content for Tab 2 */}
-        <Text>Tab 2 sess</Text>
+        <CalendarComponent />
+        <SlotsList/>
+        
       </Tab>
 
       <Tab active={activeTab === 2}>
@@ -94,6 +99,8 @@ const App = () => {
         {/* Content for Tab 2 */}
         <Text>Tab 4 Content</Text>
       </Tab>
+
+    
       
     </View>
 
@@ -103,9 +110,6 @@ const App = () => {
 };
 
 const styles = StyleSheet.create({
-  body:{
-    
-  },
   consultantContainer: {
     flexDirection: 'row',
     marginBottom: 20,
@@ -160,10 +164,10 @@ const styles = StyleSheet.create({
 
   activeTab:{
     fontWeight : 'bold',
-    fontSize: 15,
+    fontSize: 13,
     padding:10,
-    marginLeft: 10,
-    marginRight: 10,
+    marginLeft: 2,
+    marginRight: 2,
     backgroundColor: '#fdeded',
     borderRadius: 15,
     color: '#fb5456'
@@ -171,10 +175,10 @@ const styles = StyleSheet.create({
   },
   normalTab:{
     fontWeight : 'normal',
-    fontSize: 15,
+    fontSize: 13,
     padding:10,
-    marginLeft: 10,
-    marginRight: 10,
+    marginLeft: 2,
+    marginRight: 2,
     borderRadius: 15,
 
   },
